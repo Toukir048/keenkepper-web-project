@@ -1,6 +1,11 @@
+import { useEffect, useState } from "react";
 import friendsData from "../data/friendsData.json";
+import { Link } from "react-router";
 
 export default function Home() {
+  const [friends, setFriends] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const stats = [
     { value: "10", label: "Total Friends" },
     { value: "3", label: "On Track" },
@@ -19,6 +24,42 @@ export default function Home() {
     almost_due: "Almost Due",
     overdue: "Overdue",
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFriends(friendsData);
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="flex min-h-screen items-center justify-center bg-[#f8fafc] px-4">
+        <div className="text-center">
+          <div className="relative mx-auto flex h-28 w-28 items-center justify-center">
+            <span className="loading loading-ring h-28 w-28 text-emerald-900"></span>
+            <span className="loading loading-spinner absolute h-12 w-12 text-emerald-700"></span>
+          </div>
+
+          <h2 className="mt-6 text-2xl font-bold text-slate-800">
+            Loading Your Friends
+          </h2>
+
+          <p className="mt-2 text-sm text-slate-500">
+            Preparing meaningful connections...
+          </p>
+
+          <div className="mt-6 flex justify-center gap-2">
+            <span className="h-3 w-3 animate-bounce rounded-full bg-emerald-900"></span>
+            <span className="h-3 w-3 animate-bounce rounded-full bg-emerald-700 [animation-delay:0.15s]"></span>
+            <span className="h-3 w-3 animate-bounce rounded-full bg-emerald-500 [animation-delay:0.3s]"></span>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="min-h-screen bg-[#f8fafc] px-4 py-12 sm:px-6 lg:px-8">
@@ -65,10 +106,11 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {friendsData.map((friend) => (
-              <div
+            {friends.map((friend) => (
+              <Link
+                to={`/friend/${friend.id}`}
                 key={friend.id}
-                className="card rounded-lg border border-slate-100 bg-white shadow-sm"
+                className="card rounded-lg border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="card-body items-center py-8 text-center">
                   <img
@@ -97,14 +139,13 @@ export default function Home() {
                   </div>
 
                   <span
-                    className={`mt-2 rounded-full px-3 py-1 text-xs font-bold ${
-                      statusStyle[friend.status]
-                    }`}
+                    className={`mt-2 rounded-full px-3 py-1 text-xs font-bold ${statusStyle[friend.status]
+                      }`}
                   >
                     {statusText[friend.status]}
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

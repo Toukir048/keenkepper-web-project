@@ -1,19 +1,24 @@
 import { createBrowserRouter } from "react-router";
-import MainLayout from "../layouts/MainLayout";
-import Home from "../pages/Home";
-import ErrorPage from "../components/ErrorPage";
+import Home from "../pages/Home.jsx"
+import FriendDetails from "../pages/FriendDetails.jsx"
+import ErrorPage from "../components/ErrorPage.jsx"
+import MainLayout from "../layouts/MainLayout.jsx"
 
 const router = createBrowserRouter([
   {
     path: "/",
-    Component : MainLayout,
-    errorElement : <ErrorPage/>,
-    children : [
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
+    children: [
       {
-        index : true,
-        Component: Home
-      }
-    ]
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "friend/:id",
+        element: <FriendDetails />,
+      },
+    ],
   },
 ]);
 
