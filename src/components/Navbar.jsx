@@ -43,18 +43,30 @@ export default function Navbar() {
           </nav>
 
           <div className="dropdown dropdown-end sm:hidden">
-            <button tabIndex={0} className="btn btn-ghost btn-sm">
+            <button
+              tabIndex={0}
+              className="btn btn-ghost btn-sm border-none text-emerald-900"
+            >
               ☰
             </button>
 
             <ul
               tabIndex={0}
-              className="menu dropdown-content z-50 mt-3 w-48 rounded-box bg-white p-2 shadow"
+              className="menu dropdown-content z-50 mt-3 w-52 rounded-box bg-white p-2 shadow-lg"
             >
               {navItems.map((item) => (
                 <li key={item.name}>
-                  <NavLink to={item.path} className="gap-2 font-semibold">
-                    <span>{item.icon}</span>
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `flex items-center gap-3 rounded-lg px-4 py-3 text-base font-bold transition ${
+                        isActive
+                          ? "bg-emerald-900 text-white"
+                          : "text-slate-800 hover:bg-slate-100 hover:text-emerald-900"
+                      }`
+                    }
+                  >
+                    <span className="text-xl">{item.icon}</span>
                     {item.name}
                   </NavLink>
                 </li>
