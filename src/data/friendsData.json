@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "David Kim",
+    "picture": "/person-1.jpg",
+    "email": "david@example.com",
+    "days_since_contact": 62,
+    "status": "almost_due",
+    "tags": ["work"],
+    "bio": "A professional connection to keep in touch with.",
+    "goal": 60,
+    "next_due_date": "2026-05-05"
+  },
+  {
+    "id": 2,
+    "name": "Emma Wilson",
+    "picture": "/person-2.jpg",
+    "email": "emma@example.com",
+    "days_since_contact": 62,
+    "status": "overdue",
+    "tags": ["family"],
+    "bio": "A meaningful family connection.",
+    "goal": 30,
+    "next_due_date": "2026-04-25"
+  },
+  {
+    "id": 3,
+    "name": "Lisa Nakamura",
+    "picture": "/person-3.jpg",
+    "email": "lisa@example.com",
+    "days_since_contact": 62,
+    "status": "overdue",
+    "tags": ["work"],
+    "bio": "A work friend worth staying connected with.",
+    "goal": 45,
+    "next_due_date": "2026-04-22"
+  },
+  {
+    "id": 4,
+    "name": "James Wright",
+    "picture": "/person-4.jpg",
+    "email": "james@example.com",
+    "days_since_contact": 62,
+    "status": "overdue",
+    "tags": ["hobby", "travel"],
+    "bio": "A friend connected through hobbies and travel.",
+    "goal": 30,
+    "next_due_date": "2026-04-20"
+  },
+  {
+    "id": 5,
+    "name": "Sophia Lee",
+    "picture": "/person-5.jpg",
+    "email": "sophia@example.com",
+    "days_since_contact": 18,
+    "status": "on_track",
+    "tags": ["college", "close friend"],
+    "bio": "Met during college and still shares a close bond.",
+    "goal": 30,
+    "next_due_date": "2026-05-18"
+  },
+  {
+    "id": 6,
+    "name": "Michael Brown",
+    "picture": "/person-6.jpg",
+    "email": "michael@example.com",
+    "days_since_contact": 40,
+    "status": "almost_due",
+    "tags": ["work"],
+    "bio": "A former teammate who is good to stay connected with.",
+    "goal": 45,
+    "next_due_date": "2026-05-03"
+  },
+  {
+    "id": 7,
+    "name": "Olivia Carter",
+    "picture": "/person-7.jpg",
+    "email": "olivia@example.com",
+    "days_since_contact": 10,
+    "status": "on_track",
+    "tags": ["family"],
+    "bio": "A family connection who matters a lot.",
+    "goal": 30,
+    "next_due_date": "2026-05-20"
+  },
+  {
+    "id": 8,
+    "name": "Daniel Smith",
+    "picture": "/person-8.jpg",
+    "email": "daniel@example.com",
+    "days_since_contact": 75,
+    "status": "overdue",
+    "tags": ["travel", "hobby"],
+    "bio": "A travel friend with many shared memories.",
+    "goal": 60,
+    "next_due_date": "2026-04-18"
+  },
+  {
+    "id": 9,
+    "name": "Ava Johnson",
+    "picture": "/person-9.jpg",
+    "email": "ava@example.com",
+    "days_since_contact": 28,
+    "status": "on_track",
+    "tags": ["close friend"],
+    "bio": "A close friend who is always supportive.",
+    "goal": 35,
+    "next_due_date": "2026-05-10"
+  },
+  {
+    "id": 10,
+    "name": "Ethan Miller",
+    "picture": "/person-10.jpg",
+    "email": "ethan@example.com",
+    "days_since_contact": 55,
+    "status": "almost_due",
+    "tags": ["college", "work"],
+    "bio": "A college friend who later became a work connection.",
+    "goal": 60,
+    "next_due_date": "2026-05-06"
+  }
+]
