@@ -5,11 +5,16 @@ import { Link } from "react-router";
 export default function Home() {
   const [friends, setFriends] = useState([]);
   const [loading, setLoading] = useState(true);
+  const totalFriends = friends.length;
+  const onTrack = friends.filter((friend) => friend.status === "on_track").length;
+  const needAttention = friends.filter(
+    (friend) => friend.status === "almost_due" || friend.status === "overdue"
+  ).length;
 
   const stats = [
-    { value: "10", label: "Total Friends" },
-    { value: "3", label: "On Track" },
-    { value: "6", label: "Need Attention" },
+    { value: totalFriends, label: "Total Friends" },
+    { value: onTrack, label: "On Track" },
+    { value: needAttention, label: "Need Attention" },
     { value: "12", label: "Interactions This Month" },
   ];
 
