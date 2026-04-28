@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router";
 import { FaRegBell, FaArchive, FaRegTrashAlt } from "react-icons/fa";
 import { IoCallOutline, IoVideocamOutline } from "react-icons/io5";
 import { MdOutlineTextsms } from "react-icons/md";
+import { toast } from "react-toastify";
 import friendsData from "../data/friendsData.json";
 
 export default function FriendDetails() {
@@ -31,6 +32,25 @@ export default function FriendDetails() {
     overdue: "Overdue",
   };
 
+  const handleCheckIn = (type) => {
+    const newEntry = {
+      id: Date.now(),
+      friendId: friend.id,
+      date: new Date().toISOString(),
+      title: `${type} with ${friend.name}`,
+      type: type.toLowerCase(),
+    };
+
+    const oldTimeline = JSON.parse(localStorage.getItem("timeline")) || [];
+
+    localStorage.setItem(
+      "timeline",
+      JSON.stringify([newEntry, ...oldTimeline])
+    );
+
+    toast.success(`${type} with ${friend.name} added to timeline`);
+  };
+
   if (loading) {
     return (
       <section className="flex min-h-screen items-center justify-center bg-[#f8fafc]">
@@ -48,7 +68,10 @@ export default function FriendDetails() {
     return (
       <section className="min-h-screen bg-[#f8fafc] py-12 text-center">
         <h1 className="text-3xl font-bold text-slate-800">Friend Not Found</h1>
-        <Link to="/" className="btn mt-6 bg-white text-slate-800 shadow-sm">
+        <Link
+          to="/"
+          className="btn mt-6 border-none bg-white text-slate-800 shadow-sm"
+        >
           Back Home
         </Link>
       </section>
@@ -106,17 +129,17 @@ export default function FriendDetails() {
           </div>
 
           <div className="mt-3 space-y-2">
-            <button className="btn border-none h-11 w-full bg-white text-slate-700 shadow-sm hover:bg-slate-50 border-2-gray">
+            <button className="btn h-11 w-full border-none bg-white text-slate-700 shadow-sm hover:bg-slate-50">
               <FaRegBell />
               Snooze 2 Weeks
             </button>
 
-            <button className="btn border-none h-11 w-full bg-white text-slate-700 shadow-sm hover:bg-slate-50">
+            <button className="btn h-11 w-full border-none bg-white text-slate-700 shadow-sm hover:bg-slate-50">
               <FaArchive />
               Archive
             </button>
 
-            <button className="btn border-none h-11 w-full bg-white text-red-500 shadow-sm hover:bg-red-50">
+            <button className="btn h-11 w-full border-none bg-white text-red-500 shadow-sm hover:bg-red-50">
               <FaRegTrashAlt />
               Delete
             </button>
@@ -155,7 +178,7 @@ export default function FriendDetails() {
                 Relationship Goal
               </h3>
 
-              <button className="btn border-none btn-sm bg-white text-slate-700 shadow-sm hover:bg-slate-50">
+              <button className="btn btn-sm border-none bg-white text-slate-700 shadow-sm hover:bg-slate-50">
                 Edit
               </button>
             </div>
@@ -174,21 +197,30 @@ export default function FriendDetails() {
             </h3>
 
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <button className="btn border-none h-[70px] bg-[#f8fafc] text-slate-800 shadow-sm hover:bg-slate-100">
+              <button
+                onClick={() => handleCheckIn("Call")}
+                className="btn h-[70px] border-none bg-[#f8fafc] text-slate-800 shadow-sm hover:bg-slate-100"
+              >
                 <div className="flex flex-col items-center gap-1">
                   <IoCallOutline className="text-3xl" />
                   <span>Call</span>
                 </div>
               </button>
 
-              <button className="btn border-none h-[70px] bg-[#f8fafc] text-slate-800 shadow-sm hover:bg-slate-100">
+              <button
+                onClick={() => handleCheckIn("Text")}
+                className="btn h-[70px] border-none bg-[#f8fafc] text-slate-800 shadow-sm hover:bg-slate-100"
+              >
                 <div className="flex flex-col items-center gap-1">
                   <MdOutlineTextsms className="text-3xl" />
                   <span>Text</span>
                 </div>
               </button>
 
-              <button className="btn border-none h-[70px] bg-[#f8fafc] text-slate-800 shadow-sm hover:bg-slate-100">
+              <button
+                onClick={() => handleCheckIn("Video")}
+                className="btn h-[70px] border-none bg-[#f8fafc] text-slate-800 shadow-sm hover:bg-slate-100"
+              >
                 <div className="flex flex-col items-center gap-1">
                   <IoVideocamOutline className="text-3xl" />
                   <span>Video</span>

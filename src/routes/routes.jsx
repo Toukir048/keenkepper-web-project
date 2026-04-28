@@ -3,6 +3,7 @@ import Home from "../pages/Home.jsx"
 import FriendDetails from "../pages/FriendDetails.jsx"
 import ErrorPage from "../components/ErrorPage.jsx"
 import MainLayout from "../layouts/MainLayout.jsx"
+import Timeline from "../pages/Timeline.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
         path: "friend/:id",
         element: <FriendDetails />,
       },
+      {
+        path: "timeline",
+        element: <Timeline />,
+      }
     ],
   },
 ]);
