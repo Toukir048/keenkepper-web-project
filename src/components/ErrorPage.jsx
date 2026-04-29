@@ -1,8 +1,13 @@
 import { Link } from "react-router";
 import { FiHome } from "react-icons/fi";
 import { TbError404 } from "react-icons/tb";
+import { useEffect } from "react";
 
 export default function ErrorPage() {
+  useEffect(() => {
+    document.title = "KeenKeeper | Page Not Found";
+  }, []);
+
   return (
     <section className="flex min-h-screen items-center justify-center bg-emerald-950 px-4 py-12 text-white sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
@@ -30,12 +35,6 @@ export default function ErrorPage() {
           <FiHome className="text-lg" />
           Back to Home
         </Link>
-
-        <div className="mt-12 flex justify-center gap-2">
-          <span className="h-3 w-3 animate-pulse rounded-full bg-white/40"></span>
-          <span className="h-3 w-3 animate-pulse rounded-full bg-white/60 delay-150"></span>
-          <span className="h-3 w-3 animate-pulse rounded-full bg-white/80 delay-300"></span>
-        </div>
       </div>
     </section>
   );

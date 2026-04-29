@@ -31,6 +31,8 @@ export default function Home() {
   };
 
   useEffect(() => {
+    document.title = "KeenKeeper | Home";
+
     const timer = setTimeout(() => {
       setFriends(friendsData);
       setLoading(false);
@@ -39,6 +41,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
+  
   if (loading) {
     return (
       <section className="flex min-h-screen items-center justify-center bg-[#f8fafc] px-4">

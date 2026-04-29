@@ -6,15 +6,26 @@ import { MdOutlineTextsms } from "react-icons/md";
 import { toast } from "react-toastify";
 import friendsData from "../data/friendsData.json";
 
+
+
 export default function FriendDetails() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [friend, setFriend] = useState(null);
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFriend(friendsData.find((item) => item.id === Number(id)));
+      const selectedFriend = friendsData.find((item) => item.id === Number(id));
+
+      setFriend(selectedFriend);
       setLoading(false);
+
+      if (selectedFriend) {
+        document.title = `KeenKeeper | ${selectedFriend.name}`;
+      } else {
+        document.title = "KeenKeeper | Friend Not Found";
+      }
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -104,9 +115,8 @@ export default function FriendDetails() {
 
             <div className="mt-2 flex flex-col items-center gap-2">
               <span
-                className={`rounded-full px-3 py-1 text-xs font-bold ${
-                  statusStyle[friend.status]
-                }`}
+                className={`rounded-full px-3 py-1 text-xs font-bold ${statusStyle[friend.status]
+                  }`}
               >
                 {statusText[friend.status]}
               </span>

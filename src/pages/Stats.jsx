@@ -12,6 +12,8 @@ export default function Stats() {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
+    document.title = "KeenKeeper | Stats";
+
     const timeline = JSON.parse(localStorage.getItem("timeline")) || [];
 
     const callCount = timeline.filter((item) => item.type === "call").length;

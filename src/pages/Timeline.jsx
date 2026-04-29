@@ -5,6 +5,8 @@ export default function Timeline() {
     const [filter, setFilter] = useState("all");
 
     useEffect(() => {
+        document.title = "KeenKeeper | Timeline";
+
         const savedTimeline = JSON.parse(localStorage.getItem("timeline")) || [];
         setTimeline(savedTimeline);
     }, []);
